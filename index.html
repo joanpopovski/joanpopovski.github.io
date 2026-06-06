@@ -60,27 +60,25 @@
           <p>
             I have strong skills in systems and graphics programming — from bare-metal C to real-time
             rendering with <strong>OpenGL</strong> and game development with <strong>Unreal Engine 5</strong>.
-            I also explore machine learning through Python projects (CNNs, neural networks) and have hands-on
+            I also explore machine learning through Python projects and have hands-on
             research experience in scientific visualisation for immersive environments.
           </p>
           <p>
-            I'm trilingual (English C1, French C1, Macedonian native) and comfortable working in
-            international environments.
+            Currently working at <strong>Hero</strong>, a FinTech company, where I started as a Business Engineer building internal tools and data pipelines, and have since moved to Full Stack Engineer on the Core Banking System team.
+          </p>
+          <p>
+            I'm trilingual — English C1, French C1, Macedonian native — and comfortable working in international environments.
           </p>
         </div>
         <div class="about-aside">
           <div class="about-stats">
             <div class="card-stat">
-              <span class="stat-num">9+</span>
+              <span class="stat-num">10+</span>
               <span class="stat-label">Technologies</span>
             </div>
             <div class="card-stat">
-              <span class="stat-num">4</span>
-              <span class="stat-label">Personal projects</span>
-            </div>
-            <div class="card-stat">
-              <span class="stat-num">2026</span>
-              <span class="stat-label">Master's graduation</span>
+              <span class="stat-num">5+</span>
+              <span class="stat-label">Projects</span>
             </div>
           </div>
           <div class="lang-block">
@@ -294,33 +292,159 @@
   <section id="projects" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
+      <div class="projects-list">
 
-        <div class="project-card">
-          <div class="project-lang">C</div>
-          <h3>Systems Programming</h3>
-          <p>Sokoban game implementation and parallel programming projects exploring concurrency and low-level memory management.</p>
-        </div>
+        <details class="project-item">
+          <summary class="project-summary">
+            <span class="project-summary-left">
+              <span class="project-tag">Unity / C# / HLSL</span>
+              <span class="project-title">HoloDisplay</span>
+            </span>
+            <span class="project-arrow">&#8964;</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Collaborative immersive scientific visualisation system built as part of the CNRS CONTINUUM project (M2 I3D). Ports the JavaScript <em>HoloCube</em> prototype into a reusable Unity package, projecting real-time RGBD streams onto the three visible faces of a virtual cube.
+            </p>
+            <ul class="timeline-list" style="margin-top:.8rem">
+              <li>Off-axis frustum projection that adapts dynamically to the observer's viewpoint</li>
+              <li>Custom HLSL shaders: depth reprojection in the fragment shader with <code>SV_Depth</code> write, and a separate depth-capture shader</li>
+              <li>Client-server architecture via Node.js WebSockets — <em>DisplayClient</em> sends camera matrices, <em>RemoteRenderer</em> streams back JPEG colour + raw RFloat depth textures</li>
+              <li>Matrix/texture snapshot system to keep shader input coherent across network latency</li>
+              <li>Additive Scene Loading separating local (HoloCube) and remote (scene to visualise) contexts</li>
+            </ul>
+            <img src="images/holocube.png" alt="HoloDisplay — HoloCube render" class="project-img" />
+            <div class="edu-skills" style="margin-top:1rem">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">HLSL</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">WebSockets</span>
+            </div>
+          </div>
+        </details>
 
-        <div class="project-card">
-          <div class="project-lang">Unity / C#</div>
-          <h3>Tile Titans</h3>
-          <p>A fully playable Domino board game built in Unity, featuring game state management, AI logic, and custom UI.</p>
-        </div>
+        <details class="project-item">
+          <summary class="project-summary">
+            <span class="project-summary-left">
+              <span class="project-tag">OptiX / CUDA / C++</span>
+              <span class="project-title">Path Tracing</span>
+            </span>
+            <span class="project-arrow">&#8964;</span>
+          </summary>
+          <div class="project-body">
+            <p>GPU path tracer built with NVIDIA OptiX and CUDA as part of the M2 I3D programme. Implements physically-based light transport from scratch.</p>
+            <ul class="timeline-list" style="margin-top:.8rem">
+              <li>Hemisphere sampling using PSA formula with TBN orthonormal basis — concentrates samples near the surface normal for faster convergence and less noise</li>
+              <li>Full path tracing in the raygen shader — multi-bounce radiance accumulation, Russian roulette termination, environment map sampling on miss, anti-aliasing via per-pixel random offsets</li>
+              <li>Barycentric texture coordinate interpolation and interpolated normals; back-face detection with normal flipping</li>
+              <li>Direct lighting via explicit area light sampling — computes Li without relying on random hits, reducing noise significantly; occlusion tested with <code>traceOcclusion</code></li>
+              <li>Lambertian BRDF with distance attenuation, light/surface angle cosine terms, and multi-sample averaging</li>
+            </ul>
+            <img src="images/path_tracing.png" alt="Path Tracing render" class="project-img" />
+            <div class="edu-skills" style="margin-top:1rem">
+              <span class="skill-tag">OptiX</span>
+              <span class="skill-tag">CUDA</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">GLSL / HLSL</span>
+            </div>
+          </div>
+        </details>
 
-        <div class="project-card">
-          <div class="project-lang">Python</div>
-          <h3>Neural Networks</h3>
-          <p>Convolutional neural network (CNN) and neural network implementations built and trained from scratch for image classification tasks.</p>
-        </div>
+        <details class="project-item">
+          <summary class="project-summary">
+            <span class="project-summary-left">
+              <span class="project-tag">Unity / C#</span>
+              <span class="project-title">Tile Titans</span>
+            </span>
+            <span class="project-arrow">&#8964;</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Multiplayer online Domino game built as a group project, with a full client-server architecture (Unity client, C# server with onion + CQRS architecture, MySQL database over TCP/TLS).
+            </p>
+            <p style="margin-top:.6rem">My role — UI &amp; game logic:</p>
+            <ul class="timeline-list" style="margin-top:.4rem">
+              <li>Led the initial UI design in <strong>Figma</strong>, creating the prototype used as the foundation for development</li>
+              <li>Ran user testing with the team and professor, iterated on the design based on feedback</li>
+              <li>Implemented the full interface in <strong>Unity</strong> across three scenes: login/register, main menu (lobbies, profile, settings), and the game board</li>
+              <li>Worked on bridging the game logic to the UI — displaying dominos, rendering valid placement arrows, syncing player hands and board state</li>
+              <li>Contributed to game logic implementation alongside the UI work</li>
+              <li>Polished the final look: reworked the logo and added UI animations via Unity's Animator</li>
+            </ul>
+            <div class="project-img-frame">
+              <img src="images/tile_titans.png" alt="Tile Titans" class="project-img" />
+            </div>
+            <div class="edu-skills" style="margin-top:1rem">
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">TCP / TLS</span>
+              <span class="skill-tag">MySQL</span>
+            </div>
+          </div>
+        </details>
 
-        <div class="project-card research">
-          <div class="project-lang">Research</div>
-          <h3>Scientific Visualisation</h3>
-          <p>Research project on scientific visualisation techniques for immersive environments as part of the Master I3D programme.</p>
-        </div>
+        <details class="project-item">
+          <summary class="project-summary">
+            <span class="project-summary-left">
+              <span class="project-tag">C++ / SDL2</span>
+              <span class="project-title">Konkr</span>
+            </span>
+            <span class="project-arrow">&#8964;</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              Turn-based hex strategy game built from scratch in C++17 with SDL2. Inspired by the mobile game <em>Konkr</em> — two players compete over a hexagonal map, managing territories, towns, and units.
+            </p>
+            <ul class="timeline-list" style="margin-top:.8rem">
+              <li>Hex grid engine with territory splitting — if two towns are connected, they divide hexagons and each collects income from its own territory</li>
+              <li>Built-in map creator: paint faction hexagons, place towns, save/load maps to file; supports both mouse and full keyboard navigation</li>
+              <li>Shop system with drag-and-drop unit placement, blue move highlights showing valid positions on the map</li>
+              <li>Full game mechanics: unit promotions, battles, territory cut-off, autonomous bandits, and a single-step undo system</li>
+              <li>CMake build with SDL2, SDL2_gfx, SDL2_ttf, SDL2_image, PNG and ZLIB — includes a custom <code>FindSDL2_gfx.cmake</code> module</li>
+            </ul>
+            <img src="images/konkr.png" alt="Konkr game" class="project-img" />
+            <div class="edu-skills" style="margin-top:1rem">
+              <span class="skill-tag">C++17</span>
+              <span class="skill-tag">SDL2</span>
+              <span class="skill-tag">CMake</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="project-item research">
+          <summary class="project-summary">
+            <span class="project-summary-left">
+              <span class="project-tag">Research / OptiX</span>
+              <span class="project-title">Scientific Visualisation in Immersive Environments</span>
+            </span>
+            <span class="project-arrow">&#8964;</span>
+          </summary>
+          <div class="project-body">
+            <p>
+              TER research project (M2 I3D) exploring how immersive environments improve scientific visualisation over traditional 2D screens. Combined a literature review of 30+ years of research with a working prototype deployed in the <strong>CAVE</strong> system at iCube laboratory, Université de Strasbourg.
+            </p>
+            <ul class="timeline-list" style="margin-top:.8rem">
+              <li>Studied key techniques: volume rendering, field visualisation, interactive feature extraction applied to fluid dynamics, medical imaging and astrophysical simulations</li>
+              <li>Integrated the iCube team's <strong>OptiX ray-casting volume renderer</strong> into the CAVE stereoscopic environment</li>
+              <li>Implemented stereoscopic rendering by computing per-eye camera offsets and CAVE screen coordinates, sending rays from each eye to each pixel of the physical screen panels</li>
+              <li>First approach: attempted to pass OptiX render textures into an OpenGL/easycppogl CAVE renderer — ran into compilation and GPU memory conflicts</li>
+              <li>Second approach: ported CAVE screen-coordinate and camera logic directly into the OptiX renderer — achieved a fixed-camera stereoscopic volume render on one screen at 60 fps per eye (120 Hz alternating lenses)</li>
+            </ul>
+            <img src="images/research.jpg" alt="Stereoscopic volume render in the CAVE system" class="project-img" />
+            <div class="edu-skills" style="margin-top:1rem">
+              <span class="skill-tag">OptiX</span>
+              <span class="skill-tag">CUDA</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">OpenGL</span>
+              <span class="skill-tag">CAVE / VR</span>
+            </div>
+          </div>
+        </details>
 
       </div>
+      <p class="projects-note">These are a selection of my main projects. I have worked on many more during my university years, across different languages and technologies — from low-level systems programming in C to database-driven applications in Java and SQL.</p>
     </div>
   </section>
 
